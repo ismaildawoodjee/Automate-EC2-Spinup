@@ -1,0 +1,8 @@
+.*
+logs
+passwords.txt
+*.pem
+test*
+*.md
+!README.md
+comms.txt

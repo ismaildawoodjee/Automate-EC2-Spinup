@@ -1,0 +1,4 @@
+venv
+logs
+*.pem
+comms.txt
