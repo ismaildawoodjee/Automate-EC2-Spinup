@@ -11,10 +11,10 @@ if [ $# -eq 0 ]; then
     exit 0
 fi
 
-# Ensure that docker is running and container is running as well
+# Ensure that docker is running
 if [ "$(systemctl is-active docker)" != "active" ]; then
     echo 'Error: Docker is not running.' \
-        'Start Docker using "service docker start".'
+        'Start Docker using "sudo service docker start".'
     exit 1
 fi
 
@@ -61,7 +61,7 @@ function create_authorize_security_group () {
         --group-name $SG_NAME \
         --description "Security group to host Docker container"
 
-    # Authorize security group to allow public/private SSH access into EC2
+    # Authorize security group to allow SSH access into EC2
     echo -e "INFO: Authorizing security group $SG_NAME for SSH access \n"
     aws ec2 authorize-security-group-ingress \
         --group-name $SG_NAME \
@@ -78,7 +78,7 @@ function create_authorize_security_group () {
 }
 
 function create_keypair () {
-    # Create a key pair for the EC2 launch
+    # Create a key pair for the securely launching EC2 instance
     echo -e "INFO: Creating a key pair with name $KEYPAIR_NAME \n"
     aws ec2 create-key-pair \
         --key-name $KEYPAIR_NAME \
@@ -111,7 +111,7 @@ function access_with_ssh () {
         --output text
     )
 
-    # Wait 30 seconds to allow EC2 to fully boot up
+    # Wait 30 seconds to allow EC2 instance to fully boot up
     echo -e "INFO: Waiting 30 seconds. Copying deployment script and accessing with SSH \n"
     sleep 30
     scp -i "$KEYPAIR_NAME.pem" deploy.sh "ec2-user@$EC2_PUBLIC_DNS:/home/ec2-user"
