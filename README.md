@@ -11,7 +11,4 @@ is shown below:
 
 [Running on EC2!](http://ec2-54-169-122-216.ap-southeast-1.compute.amazonaws.com:5000) (powered down for now)
 
-- high-level architecture overview
-- prerequisites for running
-- contents
-- images
+![Simple Flask app running on EC2](/assets/images/running_on_ec2.png)
