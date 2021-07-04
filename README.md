@@ -7,7 +7,7 @@ instance, SSH into it, install dependencies, and host a simple Flask app using
 the image pulled from Docker Hub. At a high level, the process of this deployment
 is shown below:
 
-![architecture](/assets/images)
+![A high-level overview of the architecture](/assets/images/infrastructure.png)
 
 [Running on EC2!](http://ec2-54-169-122-216.ap-southeast-1.compute.amazonaws.com:5000) (powered down for now)
 
